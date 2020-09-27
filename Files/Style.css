@@ -1,0 +1,1591 @@
+/*The CSS code is property to Mr. You (Kristiyan Valchev) and can only be viewed*/
+/*If you want to use part of the code, please first contact me: mr.youdevelopment@gmail.com*/
+
+html
+{
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body
+{
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    background-color: #e5e5e5;
+    overflow-x: hidden;
+}
+
+:root
+{
+    --curlyLinesOpacity: .3;
+}
+
+/*#region Scrow bar */
+::-webkit-scrollbar
+{
+	width: 10px;
+}
+
+::-webkit-scrollbar-track
+{
+    background-color: #111111;
+}
+
+::-webkit-scrollbar-thumb
+{
+	background: #ffd77f; 
+}
+
+::-webkit-scrollbar-thumb:hover
+{
+	background: #eec66e; 
+}
+/*#endregion Scrow bar */
+
+/*#region Loader */
+.Loader
+{
+	display: flex;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: #e5e5e5;
+	justify-content: center;
+	align-items: center;
+    overflow: hidden;
+    
+	z-index: 99;
+}
+
+.Loader img
+{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    mix-blend-mode: darken;
+    opacity: .3;
+    overflow: hidden;
+}
+
+.Loader.hidden
+{
+	animation: fadeOutt 1s;
+	animation-fill-mode: forwards;
+	overflow-y: visible;
+}
+
+@keyframes fadeOutt
+{
+	100%
+	{
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+
+.obj
+{
+	width: 15px;
+	height: 0px;
+	background: #ffd77f;
+    border-radius: 10px;
+	margin: 0 3px;
+    
+	animation: Loader 0.8s infinite;
+}
+
+.obj:nth-child(2)
+{
+	animation-delay: 0.1s;
+}
+.obj:nth-child(3)
+{
+	animation-delay: 0.2s;
+}
+.obj:nth-child(4)
+{
+	animation-delay: 0.3s;
+}
+.obj:nth-child(5)
+{
+	animation-delay: 0.4s;
+}
+.obj:nth-child(6)
+{
+	animation-delay: 0.5s;
+}
+.obj:nth-child(7)
+{
+	animation-delay: 0.6s;
+}
+.obj:nth-child(8)
+{
+	animation-delay: 0.7s;
+}
+
+@keyframes Loader
+{
+	0%
+	{
+		height: 0;
+        background: #ffd77f;
+	}
+	
+	50%
+	{
+		height: 80px;
+	}
+	
+	100%
+	{
+		height: 0;
+        background: #ddb66d;
+	}
+}
+/*#endregion Loader */
+
+/*#region Top bar */
+.topBar
+{
+    position: absolute;
+    width: 100%;
+    height: 120px;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+
+    z-index: 30;
+
+    animation: dropDown .5s ease-out forwards .5s;
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+.topBar a
+{
+    float: right;
+    position: relative;
+    top: calc(50% - 23px);
+    right: 490;
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 26px;
+    color: #11111180;
+    padding: 10px 25px;
+
+    animation: fadeIn .3s ease-out forwards .55s;
+    opacity: 0;
+}
+
+.topBar a::before
+{
+    content: "";
+    position: absolute;
+    width: 90%;
+    height: 3px;
+    bottom: -1px;
+    left: 5%;
+    background-color: #111111;
+    visibility: hidden;
+    transform: scaleX(0);
+    
+    transition: ease .3s;
+}
+
+.topBar a:hover::before
+{
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+.topBar a.Logo
+{
+    float: left;
+    left: 60;
+    right: auto;
+    font-size: 36px;
+    line-height: 40px;
+    color: #0a0a0a;
+    padding: 0;
+}
+
+.topBar a.Logo:hover::before
+{
+    visibility: hidden;
+}
+
+.topBar a.Logo colorise
+{
+    color: #ffd77f;
+}
+
+.topBar a.Active
+{
+    color: #111111;
+}
+
+.topBar a.threeLineButton
+{
+    display: none;
+    float: right;
+    position: absolute;
+    width: 60px;
+    height: 32px;
+    right: 30;
+    padding: 0;
+}
+
+.topBar a.threeLineButton div
+{
+    float: right;
+    position: absolute;
+    height: 3px;
+    right: 0;
+    background-color: #e5e5e5;
+}
+
+.topBar a.threeLineButton div:nth-child(1)
+{
+    width: 100%;
+    top: 1;
+}
+
+.topBar a.threeLineButton div:nth-child(2)
+{
+    width: 50%;
+    top: calc(50% - .5px);
+}
+
+.topBar a.threeLineButton div:nth-child(3)
+{
+    width: 100%;
+    bottom: 0;
+}
+
+.topBar a.threeLineButton:hover div
+{
+    width: 100%;
+}
+
+.topBar a.threeLineButton:hover::before, .topBar div.hasDropdown .dropDownMenu a:hover::before
+{
+    visibility: hidden;
+}
+/*#endregion Top bar */
+
+/*#region Side menu */
+.siteMenu
+{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #111111;
+
+    z-index: 40;
+
+    transform: translateX(100%);
+}
+
+.siteMenu a.closeButton
+{
+    float: right;
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 26;
+    left: auto;
+    right: 30;
+}
+
+.siteMenu a.closeButton div
+{
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    top: calc(50% - 2px);
+    left: 0;
+    background-color: #e5e5e5;
+}
+
+.siteMenu a.closeButton div:nth-child(1)
+{
+    transform: rotate(45deg);
+}
+
+.siteMenu a.closeButton div:nth-child(2)
+{
+    transform: rotate(-45deg);
+}
+
+.siteMenu a.closeButton:hover div
+{
+    background-color: #ffd77f;
+}
+
+.siteMenu a
+{
+    position: absolute;
+    width: 100%;
+    top: 120;
+    left: 0;
+    font-size: 26px;
+    font-weight: normal;
+    text-align: center;
+    line-height: 26px;
+    color: #e5e5e5;
+}
+
+.siteMenu a:nth-child(3) { top: 180; }
+.siteMenu a:nth-child(4) { top: 240; }
+.siteMenu a:nth-child(5) { top: 300; }
+
+.siteMenu a:hover
+{
+    color: #ffd77f;
+}
+
+.siteMenu a.Active
+{
+    font-weight: bold;
+}
+
+.siteMenu a.Active div:nth-child(1)
+{
+    position: absolute;
+    width: 40px;
+    height: 2px;
+    top: calc(50% - 1px);
+    left: calc(50% - 130px);
+    background-color: #ffd77f;
+}
+
+.siteMenu a.Active div:nth-child(2)
+{
+    position: absolute;
+    width: 40px;
+    height: 2px;
+    top: calc(50% - 1px);
+    left: calc(50% + 90px);
+    background-color: #ffd77f;
+}
+
+.siteMenu a.Active:hover div:nth-child(1)
+{
+    left: calc(50% - 140px);
+    background-color: #eec66e;
+}
+
+.siteMenu a.Active:hover div:nth-child(2)
+{
+    left: calc(50% + 100px);
+}
+/*#endregion Side menu */
+
+/*#region Main things */
+.befourTotleText
+{
+    position: absolute;
+    width: calc(100% - 200px - 60px);
+    top: 200;
+    left: 200;
+    font-size: 45px;
+    font-weight: normal;
+    line-height: 45px;
+    color: #111111;
+
+    animation: dropDown .5s ease-out forwards .6s;
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+.mainTitle
+{
+    position: absolute;
+    width: calc(100% - 200px - 60px);
+    top: 250;
+    left: 200;
+    font-size: 56px;
+    font-weight: bolder;
+    line-height: 56px;
+    color: #111111;
+
+    animation: dropDown .5s ease-out forwards .7s;
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+.subTitle
+{
+    position: absolute;
+    width: 400px;
+    top: 330;
+    left: 200;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 20px;
+    color: #11111160;
+
+    animation: dropDown .5s ease-out forwards .8s;
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+.mainButtin
+{
+    position: absolute;
+    top: 430;
+    left: 200;
+    background-color: #111111;
+    border-radius: 999px;
+    padding: 25px 40px;
+
+    animation: dropDown .5s ease-out forwards .9s;
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+.mainButtin:hover
+{
+    background-color: #ffd77f;
+}
+
+.mainButtin:hover p
+{
+    color: #111111;
+}
+
+.mainButtin p
+{
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 26px;
+    color: #e5e5e5;
+    margin-left: 40px;
+}
+
+.mainButtin div
+{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: calc(50% - 25px);
+    left: 13;
+    background-color: #ffd77f;
+    border-radius: 999px;
+}
+
+.mainButtin div i
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: calc(50% - (26px / 2));
+    left: 0;
+    font-size: 26px;
+    text-align: center;
+    color: #111111;
+    padding: 0;
+    margin: 0;
+}
+
+.mainImage
+{
+    float: right;
+    position: absolute;
+    width: 450px;
+    top: 100;
+    right: 200;
+
+    animation: dropDown .5s ease-out forwards .8s;
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+.decorativeLines
+{
+    position: absolute;
+    width: 120px;
+    height: 4px;
+    top: 560;
+    left: 200;
+    background-color: transparent;
+
+    animation: linesAnimation .5s ease-out forwards 1s;
+    width: 0px;
+    opacity: 0;
+}
+
+.decorativeLines div
+{
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.decorativeLines div:nth-child(1)
+{
+    width: 100%;
+    background-color: #999999;
+}
+
+.decorativeLines div:nth-child(2)
+{
+    width: 90%;
+    background-color: #e5e5e5;
+}
+
+.decorativeLines div:nth-child(3)
+{
+    width: 80%;
+    background-color: #999999;
+}
+
+.decorativeLines div:nth-child(4)
+{
+    width: 60%;
+    background-color: #e5e5e5;
+}
+
+.decorativeLines div:nth-child(5)
+{
+    width: 50%;
+    background-color: #ffd77f;
+}
+/*#endregion Main things */
+
+/*#region Home page */
+.sideClothImage
+{
+    position: absolute;
+    height: 1600px;
+    top: 400;
+    left: -200;
+    transform: scale(-1, 1);
+}
+
+.mintImage
+{
+    position: absolute;
+    width: 210px;
+    top: 750px;
+    left: 10;
+    transform: rotate(30deg);
+}
+
+.pageContent
+{
+    position: absolute;
+    width: calc(100% - 200px - 30px);
+    height: auto;
+    top: 900;
+    left: 200;
+    background-color: transparent;
+}
+
+.pageContent .Section
+{
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+    background-color: transparent;
+    margin-bottom: 200px;
+
+    animation: dropDown .5s ease-out forwards 1.1s;
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+.pageContent .Section.Contacts
+{
+    min-height: 200px;
+}
+
+.pageContent .Section .sectionTitle
+{
+    position: relative;
+    width: calc(100% - 120px);
+    top: 20;
+    left: 60;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 32px;
+    color: #111111;
+
+    animation: dropDown .5s ease-out forwards 1.2s;
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+.pageContent .Section .sectionText
+{
+    position: relative;
+    width: calc(100% - 120px);
+    top: 40;
+    left: 60;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 22px;
+    color: #111111;
+
+    animation: dropDown .5s ease-out forwards 1.3s;
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+.pageContent .Section .sectionList
+{
+    position: relative;
+    width: calc(100% - 60px);
+    height: 290px;
+    top: 80;
+    left: 60;
+    background-color: transparent;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+
+    animation: dropDown .5s ease-out forwards 1.4s;
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+.pageContent .Section .sectionList .listBox
+{
+    display: inline-block;
+    position: relative;
+    width: 150px;
+    height: 260px;
+    top: 0;
+    left: 0;
+    background-color: #11111108;
+    border-radius: 30px;
+    margin-right: 30px;
+    overflow: hidden;
+}
+
+.pageContent .Section .sectionList::-webkit-scrollbar
+{
+    width: 1px;
+}
+
+.pageContent .Section .sectionList .listBox .sectionDirectionalArrow
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.pageContent .Section .sectionList .listBox .sectionDirectionalArrow div
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: calc(50% - 20px);
+    left: 0;
+    font-size: 26px;
+    text-align: center;
+    line-height: 26px;
+    color: #111111;
+}
+
+.pageContent .Section .sectionList .listBox:hover
+{
+    width: 160px;
+}
+
+.pageContent .Section .sectionList .listBox img
+{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.pageContent .Section .sectionList .listBox #a01
+{
+    top: -50;
+}
+
+.pageContent .Section .sectionList .listBox #a02
+{
+    top: 0;
+}
+
+.pageContent .Section .sectionList .listBox #a03
+{
+    width: 150%;
+    top: -20;
+    left: -35;
+}
+
+.pageContent .Section .sectionList .listBox #a04
+{
+    width: 150%;
+    top: 0;
+    left: -35;
+}
+
+.pageContent .Section .sectionList .listBox #a05
+{
+    width: 150%;
+    top: 0;
+    left: -35;
+}
+
+.pageContent .Section .sectionList .listBox .textPart
+{
+    position: absolute;
+    width: calc(100% + 2px);
+    height: 50%;
+    bottom: 0;
+    left: -1;
+    background-color: #DFDFDF;
+
+    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+}
+
+.pageContent .Section .sectionList .listBox .textPart .productName
+{
+    position: absolute;
+    width: calc(100% - 30px);
+    top: 25;
+    left: 15;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 16px;
+    color: #111111;
+    white-space: normal;
+}
+
+.pageContent .Section .sectionList .listBox .textPart .productOrderButton
+{
+    float: right;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: 10;
+    right: 10;
+    background-color: #ffd77f;
+    border-radius: 999px;
+}
+
+.pageContent .Section .sectionList .listBox .textPart .productOrderButton div
+{
+    position: absolute;
+    width: 100%;
+    top: calc(50% - 9px);
+    left: 0;
+    font-size: 18px;
+    text-align: center;
+    line-height: 18px;
+    color: #111111;
+}
+
+.pageContent .Section iframe
+{
+    position: relative;
+    width: 700px;
+    height: 300px;
+    top: 80;
+    left: 60;
+
+    box-shadow: 30px 10px #ffd77f, 60px -10px #11111120;
+
+    animation: dropDown .5s ease-out forwards 1.4s;
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+.pageContent .Section .mainContactsList
+{
+    position: relative;
+    width: calc(150px + 40px);
+    height: 50px;
+    top: 80;
+    left: 60;
+
+    animation: dropDown .5s ease-out forwards 1.4s;
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+.pageContent .Section .mainContactsList a
+{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 0;
+    left: 0;
+    background-color: #ffd77f;
+    border-radius: 999px;
+}
+
+.pageContent .Section .mainContactsList a i
+{
+    position: absolute;
+    width: 100%;
+    top: calc(50% - 12px);
+    left: 0;
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
+    color: #111111;
+}
+
+.pageContent .Section .mainContactsList a.F
+{
+    left: 70;
+}
+
+.pageContent .Section .mainContactsList a.M
+{
+    left: 140;
+}
+/*#endregion Home page */
+
+/*#region Bottom bar */
+.bottomBar
+{
+    position: absolute;
+    width: 100%;
+    height: 250px;
+    top: 2400;
+    left: 0;
+    background-color: #111111;
+
+    animation: dropDown .5s ease-out forwards 1.5s;
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+.bottomBar .directionButton
+{
+    position: absolute;
+    width: 33%;
+    height: 50px;
+    top: 60;
+    background-color: transparent;
+
+    animation: fadeIn .3s ease-out forwards 1.8s;
+    opacity: 0;
+}
+
+.bottomBar .directionButton.N
+{
+    left: 0;
+}
+
+.bottomBar .directionButton.Z
+{
+    left: 33%;
+}
+
+.bottomBar .directionButton.M
+{
+    left: 66%;
+}
+
+.bottomBar a
+{
+    position: absolute;
+    width: 100%;
+    top: calc(50% - 18px);
+    left: 0;
+    font-size: 30px;
+    font-weight: normal;
+    text-decoration: none;
+    text-align: center;
+    color: #e5e5e5;
+    opacity: .7;
+}
+
+.bottomBar a:hover
+{
+    color: #ffd77f;
+    opacity: 1;
+}
+
+.bottomBar a.Active
+{
+    font-weight: bold;
+}
+
+.bottomBar .Credits
+{
+    position: absolute;
+    width: 100%;
+    top: auto;
+    bottom: 10;
+    text-align: center;
+    color: #e5e5e540;
+}
+
+.bottomBar .Credits powerd:hover company
+{
+    color: #61da7d;
+    transition: ease .3s;
+}
+
+.bottomBar .Credits managed:hover my
+{
+    color: #028bc2;
+    transition: ease .3s;
+}
+/*#endregion Bottom bar */
+
+/*#region Shapes */
+.sideBGBoxHolder
+{
+    position: absolute;
+    width: 100%;
+    height: 1200px;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    overflow: hidden;
+}
+
+.sideBGBox
+{
+    float: right;
+    position: absolute;
+    width: 1000px;
+    height: 1000px;
+    top: -50;
+    right: -400;
+    background-color: #111111;
+    border-radius: 100px;
+    transform: rotate(33deg);
+    overflow: hidden;
+
+    z-index: -10;
+
+    animation: dropDownSideBGBox .5s ease-out forwards .5s;
+    transform: rotate(0deg) translateY(-50px);
+    opacity: 0;
+}
+
+.sideBGBox img
+{
+    float: right;
+    position: absolute;
+    width: 900px;
+    right: 0;
+    top: 0;
+    mix-blend-mode: lighten;
+    filter: grayscale(1);
+    opacity: .1;
+    overflow: hidden;
+}
+/*#endregion Shapes */
+
+/*#region Decorations */
+.mainDecorationLines
+{
+    float: right;
+    position: absolute;
+    width: 400px;
+    top: 60;
+    right: 420;
+
+    z-index: -11;
+
+    animation: popUpMainDecorationLines .5s ease-out forwards .8s;
+    transform: translateY(50px);
+    opacity: 0;
+}
+
+.curlyLines
+{
+    position: absolute;
+    width: 60px;
+    top: 240;
+    left: 30;
+    transform: rotate(-33deg);
+    opacity: var(--curlyLinesOpacity);
+
+    animation: dropDownCurlyLines .5s ease-out forwards .8s;
+    transform: translateY(-50px) rotate(0deg);
+    opacity: 0;
+}
+/*#endregion Decorations */
+
+img
+{
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+}
+
+a
+{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    transition: ease .3s;
+}
+
+p, div, h1, h2, h3, h4, h5, h6, i, img
+{
+    padding: 0;
+    margin: 0;
+    transition: ease .3s;
+}
+
+/*#region Animations */
+@keyframes dropDownSideBGBox
+{
+    0%
+    {
+        transform: rotate(0deg) translateY(-50px);
+        opacity: 0;
+    }
+
+    100%
+    {
+        transform: rotate(33deg) translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes linesAnimation
+{
+    0%
+    {
+        width: 0px;
+        opacity: 0;
+    }
+
+    100%
+    {
+        width: 120px;
+        opacity: 1;
+    }
+}
+
+@keyframes dropDownCurlyLines
+{
+    0%
+    {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0;
+    }
+
+    100%
+    {
+        transform: translateY(0px) rotate(-33deg);
+        opacity: var(--curlyLinesOpacity);
+    }
+}
+
+@keyframes popUpMainDecorationLines
+{
+    0%
+    {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    100%
+    {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes popUp
+{
+    0%
+    {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    100%
+    {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes dropDown
+{
+    0%
+    {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    100%
+    {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn
+{
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeOut
+{
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes defaultAnimation
+{
+    0%
+    {
+
+    }
+
+    100%
+    {
+
+    }
+}
+/*#endregion Animations */
+
+/*#region Media 1300-1000 */
+@media screen and (max-width: 1300px)
+{
+    .sideBGBox
+    {
+        right: -600;
+    }
+
+    .mainDecorationLines
+    {
+        right: 220;
+    }
+
+    .mainImage
+    {
+        width: 300px;
+        top: 200;
+        right: 60;
+    }
+
+    .topBar a
+    {
+        right: 290;
+    }
+
+    .befourTotleText, .mainTitle, .subTitle, .mainButtin, .decorativeLines
+    {
+        left: 60;
+    }
+
+    .curlyLines
+    {
+        top: 150;
+    }
+}
+
+@media screen and (max-width: 1200px)
+{
+
+}
+
+@media screen and (max-width: 1100px)
+{
+    .topBar a
+    {
+        right: 190;
+    }
+
+    .sideBGBox
+    {
+        right: -700;
+    }
+
+    .mainDecorationLines
+    {
+        right: 120;
+    }
+
+    .mainImage
+    {
+        width: 300px;
+        top: 200;
+        right: 60;
+    }
+
+    .sideClothImage
+    {
+        left: -240;
+        transform: scale(-1, 1.2);
+    }
+
+    .mintImage
+    {
+        width: 180px;
+        top: 730px;
+    }
+
+    .pageContent
+    {
+        width: calc(100% - 60px - 60px);
+        left: 60;
+    }
+}
+
+@media screen and (max-width: 1000px)
+{
+    .topBar a
+    {
+        display: none;
+    }
+
+    .topBar a.Logo, .topBar a.threeLineButton
+    {
+        display: unset;
+    }
+
+    .sideClothImage
+    {
+        height: 600px;
+        top: 450;
+        left: -50;
+        transform: scale(-1, 1);
+    }
+
+    .mintImage
+    {
+        width: 120px;
+        top: 560px;
+    }
+
+    .befourTotleText
+    {
+        width: calc(100% - 60px);
+        font-size: 32px;
+        line-height: 32px;
+    }
+
+    .mainTitle
+    {
+        width: calc(100% - 60px);
+        top: 235;
+        font-size: 40px;
+        line-height: 40px;
+    }
+
+    .subTitle
+    {
+        top: 300;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .mainButtin
+    {
+        top: 370;
+        padding: 20px 30px;
+    }
+
+    .mainButtin p
+    {
+        font-size: 18px;
+        line-height: 18px;
+        margin-left: 30px;
+    }
+
+    .mainButtin div
+    {
+        width: 40px;
+        height: 40px;
+        top: calc(50% - 20px);
+        left: 10;
+    }
+
+    .mainButtin div i
+    {
+        top: calc(50% - (18px / 2));
+        font-size: 18px;
+    }
+
+    .decorativeLines
+    {
+        top: 490;
+    }
+
+    .pageContent .Section .sectionTitle, .pageContent .Section .sectionText,
+    .pageContent .Section .sectionList,
+    .pageContent .Section .mainContactsList
+    {
+        left: 0;
+    }
+
+    .pageContent .Section .sectionText, .pageContent .Section .sectionList
+    {
+        width: 100%;
+    }
+
+    .pageContent .Section .sectionList .listBox
+    {
+        margin-right: 5px;
+    }
+
+    .pageContent .Section iframe
+    {
+        width: 100%;
+        left: 0;
+
+        box-shadow: 10px 5px #ffd77f, 30px -5px #11111120;
+    }
+}
+/*#endregion Media 1300-1000 */
+
+/*#region Media 900-800 */
+@media screen and (max-width: 900px)
+{
+    .mainDecorationLines
+    {
+        display: none;
+    }
+
+    .bottomBar a
+    {
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 800px)
+{
+    .topBar a.Logo, .befourTotleText, .mainTitle, .subTitle, .mainButtin, .decorativeLines
+    {
+        left: 30;
+    }
+
+    .befourTotleText
+    {
+        top: 160;
+    }
+
+    .mainTitle
+    {
+        top: 195;
+    }
+
+    .subTitle
+    {
+        top: 250;
+    }
+
+    .mainButtin
+    {
+        top: 320;
+    }
+
+    .decorativeLines
+    {
+        top: 420;
+    }
+
+    .curlyLines
+    {
+        top: 120;
+        left: 350;
+    }
+
+    .bottomBar .Credits
+    {
+        width: calc(100% - 30px);
+        bottom: 10;
+        left: 15;
+        font-size: 12px;
+    }
+}
+/*#endregion Media 900-800 */
+
+/*#region Media 700-600 */
+@media screen and (max-width: 700px)
+{
+    .sideBGBox
+    {
+        width: 900px;
+        height: 900px;
+        top: -100;
+        right: -700;
+    }
+
+    .mainImage
+    {
+        width: 200px;
+        top: 280;
+        right: 30;
+    }
+
+    @keyframes dropDownSideBGBox
+    {
+        0%
+        {
+            transform: rotate(0deg) translateY(-50px);
+            opacity: 0;
+        }
+
+        100%
+        {
+            transform: rotate(12deg) translateY(0px);
+            opacity: 1;
+        }
+    }
+}
+
+@media screen and (max-width: 600px)
+{
+    .topBar a.threeLineButton div
+    {
+        background-color: #111111;
+    }
+
+    .sideBGBox
+    {
+        display: none;
+    }
+
+    .mainDecorationLines
+    {
+        display: unset;
+        width: 400px;
+        top: 450;
+        right: -100;
+    }
+
+    @keyframes popUpMainDecorationLines
+    {
+        0%
+        {
+            transform: translateY(50px) rotate(0deg);
+            opacity: 0;
+        }
+
+        100%
+        {
+            transform: translateY(0px) rotate(-55deg);
+            opacity: 1;
+        }
+    }
+
+    .mainImage
+    {
+        width: 200px;
+        top: 550;
+        right: 30;
+    }
+}
+/*#endregion Media 700-600 */
+
+/*#region Media 500-400 */
+@media screen and (max-width: 500px)
+{
+    .befourTotleText
+    {
+        font-size: 26px;
+        line-height: 26px;
+    }
+
+    .mainTitle
+    {
+        top: 190;
+        font-size: 30px;
+        line-height: 30px;
+    }
+
+    .subTitle
+    {
+        width: calc(100% - 60px);
+        top: 240;
+    }
+
+    .pageContent
+    {
+        width: calc(100% - 60px);
+        top: 960;
+        left: 30;
+    }
+
+    .pageContent .Section
+    {
+        margin-bottom: 150px;
+    }
+
+    .pageContent .Section .sectionTitle
+    {
+        font-size: 26px;
+        line-height: 26px;
+    }
+
+    .pageContent .Section .sectionText
+    {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .pageContent .Section iframe
+    {
+        box-shadow: 10px 5px #ffd77f;
+    }
+
+    /*#region Bottom bar */
+    .bottomBar
+    {
+        height: 200px;
+        top: 2350;
+    }
+
+    .bottomBar .directionButton
+    {
+        top: 30;
+        width: 100%;
+        height: 35px;
+    }
+
+    .bottomBar .directionButton.N, .bottomBar .directionButton.Z, .bottomBar .directionButton.M
+    {
+        left: 0;
+    }
+
+    .bottomBar .directionButton.Z
+    {
+        top: 70;
+    }
+
+    .bottomBar .directionButton.M
+    {
+        top: 110;
+    }
+    /*#endregion Bottom bar */
+}
+
+@media screen and (max-width: 400px)
+{
+    .bottomBar
+    {
+        top: 2400;
+    }
+}
+/*#endregion Media 500-400 */
+
+/*#region Media 350 */
+@media screen and (max-width: 350px)
+{
+
+}
+/*#endregion Media 350 */
