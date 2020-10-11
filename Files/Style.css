@@ -712,33 +712,12 @@ body
 
 .pageContent .Section .sectionList .listBox #a01
 {
-    top: -50;
+    top: -100;
 }
 
 .pageContent .Section .sectionList .listBox #a02
 {
-    top: 0;
-}
-
-.pageContent .Section .sectionList .listBox #a03
-{
-    width: 150%;
-    top: -20;
-    left: -35;
-}
-
-.pageContent .Section .sectionList .listBox #a04
-{
-    width: 150%;
-    top: 0;
-    left: -35;
-}
-
-.pageContent .Section .sectionList .listBox #a05
-{
-    width: 150%;
-    top: 0;
-    left: -35;
+    top: -30;
 }
 
 .pageContent .Section .sectionList .listBox .textPart
